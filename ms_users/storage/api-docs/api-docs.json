@@ -1,0 +1,322 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "OAUTH2 API",
+        "contact": {
+            "name": "Devsy",
+            "url": "http://www.devsy.com"
+        },
+        "version": "1.0"
+    },
+    "host": "laravel.localhost",
+    "basePath": "http://www.auth.train.com",
+    "schemes": [
+        "http"
+    ],
+    "paths": {
+        "/user": {
+            "get": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "List all users",
+                "responses": {
+                    "200": {
+                        "description": "['success'=>1]"
+                    }
+                }
+            }
+        },
+        "/user/invite": {
+            "put": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Activate user with activation hash and email address",
+                "description": "Activate user with activation hash sent in email.",
+                "operationId": "createUser",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "activation_hash",
+                        "in": "body",
+                        "description": "Activation hash from email",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#"
+                        }
+                    },
+                    {
+                        "name": "email",
+                        "in": "body",
+                        "description": "email",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "['success' =>1, 'data'=> ['user_id' => user->id ]]"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Create user (pending) and send invitation mail",
+                "description": "Invite user to system. Init user in database and wait to be activated later  when all data will be field.",
+                "operationId": "createUser",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "first_name",
+                        "in": "body",
+                        "description": "First Name",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#"
+                        }
+                    },
+                    {
+                        "name": "last_name",
+                        "in": "body",
+                        "description": "Last Name",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#"
+                        }
+                    },
+                    {
+                        "name": "role",
+                        "in": "body",
+                        "description": "Role",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#"
+                        }
+                    },
+                    {
+                        "name": "email",
+                        "in": "body",
+                        "description": "Email",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "['success' =>1, 'data'=> ['user_id' => user->id ]]"
+                    }
+                }
+            }
+        },
+        "/user/invite/{email}/{activation_hash}": {
+            "get": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "User details",
+                "description": "Get user details.",
+                "operationId": "createUser",
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "['success' =>1, 'data'=> ['user_id' => user->id ]]"
+                    }
+                }
+            }
+        },
+        "/user/invite/{email}/{activation_hash},{digitCode}": {
+            "get": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "User details",
+                "description": "Get user details.",
+                "operationId": "createUser",
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "['success' =>1, 'data'=> ['user_id' => user->id ]]"
+                    }
+                }
+            }
+        },
+        "/user/{id or email}": {
+            "get": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "User details",
+                "description": "Get user details.",
+                "operationId": "get User details",
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "['success' =>1, 'data'=> ['user_id' => user->id ]]"
+                    }
+                }
+            }
+        },
+        "/user/storenewemail": {
+            "put": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Change user email address with activation hash",
+                "description": "Change user email address with activation hash.",
+                "operationId": "changeEmail",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "activation_hash",
+                        "in": "body",
+                        "description": "Activation hash from email",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#"
+                        }
+                    },
+                    {
+                        "name": "email",
+                        "in": "body",
+                        "description": "email",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "['success' =>1, 'data'=> ['user_id' => user->id ]]"
+                    }
+                }
+            }
+        },
+        "/user/{id}": {
+            "put": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Edit user data",
+                "description": "Update data for user",
+                "operationId": "createUser",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "name",
+                        "in": "body",
+                        "description": "Name",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#"
+                        }
+                    },
+                    {
+                        "name": "active",
+                        "in": "body",
+                        "description": "Active",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#"
+                        }
+                    },
+                    {
+                        "name": "location",
+                        "in": "body",
+                        "description": "Location",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#"
+                        }
+                    },
+                    {
+                        "name": "job_title",
+                        "in": "body",
+                        "description": "Job title",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#"
+                        }
+                    },
+                    {
+                        "name": "email",
+                        "in": "body",
+                        "description": "Email",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#"
+                        }
+                    },
+                    {
+                        "name": "password",
+                        "in": "body",
+                        "description": "With password confirmation",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "['success' =>1, 'data'=> ['user_id' => user->id ]]"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Soft delete user",
+                "description": "Soft delete user.",
+                "operationId": "createUser",
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "['success' =>1]"
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "Error": {
+            "required": [
+                "code",
+                "message"
+            ],
+            "properties": {
+                "code": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "message": {
+                    "type": "string"
+                }
+            }
+        }
+    }
+}

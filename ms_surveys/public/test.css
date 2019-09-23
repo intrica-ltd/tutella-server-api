@@ -1,0 +1,115 @@
+/*
+Welcome to Custom CSS!
+
+To learn how this works, see http://wp.me/PEmnE-Bt
+*/
+.hero-content-wrapper .section-content-wrap:before, .single-footer-meta-wrapper:before, .footer-widget-area:before {
+	background-color: #fff;
+}
+
+.entry-title {
+	display: none;
+}
+
+#wp-custom-header {
+	min-height: 460px;
+}
+
+#wp-custom-header-video-button,
+.site-title {
+	display: none;
+}
+
+.custom-logo {
+	position: absolute;
+	top: 200px;
+	max-width: 200px;
+	max-height: 200px;
+	height: 200px;
+	left: 200px;
+}
+
+.section-content-wrap {
+	padding-top: 0 !important;
+}
+
+.site-header-main,
+.menu-toggle-wrapper {
+	border: none;
+}
+
+#twitter_timeline-3 {
+	width: 20%;
+	position: fixed;
+	top: 60px;
+	right: 0;
+	height: 100%;
+	overflow-y: scroll;
+	display: none;
+}
+
+#twitter_timeline-3 .widget-title {
+	display: none;
+}
+
+.custom-logo-link > img {
+	display: none;
+}
+
+.page-logo-group {
+	width: 35%;
+}
+
+.page-text-group {
+	width: 64%;
+}
+
+@media only screen and (max-width: 600px) {
+	#wp-custom-header {
+		background: url('https://fotoinmotion.files.wordpress.com/2018/07/v6_guy-flipping-on-beach-1080wide.gif');
+		width: 100%;
+		background-size: cover;
+		min-height: 150px;
+		height: auto;
+	}
+	
+	.page-logo-group {
+		width: 100%;
+	}
+	
+	.page-text-group {
+		width: 100%;
+		line-height: 1.2;
+	}
+	
+	.full-between-image {
+		background-attachment: scroll;
+		margin: 0 -27px;
+	}
+}
+
+@media only screen and (min-width: 601px) {
+	.custom-logo-link::before {
+		background: url('https://fotoinmotion.files.wordpress.com/2018/01/cropped-foto-in-motion-logo-11.png') left top no-repeat;
+		background-size: 215px 200px;
+		display: inline-block;
+		width: 215px;
+		height: 200px;
+		content: "";
+		position: absolute;
+		top: 200px;
+		left: 80px;
+	}
+	
+	.full-between-image {
+		background-attachment: fixed;
+		margin: 0 -116px;
+	}
+	
+	.archive-post-wrap {
+		margin-top: 90px;
+	}
+.entry-content{
+margin:50px !important;
+}
+}

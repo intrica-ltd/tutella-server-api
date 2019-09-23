@@ -1,0 +1,66 @@
+-- MySQL dump 10.13  Distrib 5.7.23, for Linux (x86_64)
+--
+-- Host: localhost    Database: tutella-payments
+-- ------------------------------------------------------
+-- Server version	5.7.22-0ubuntu0.17.10.1
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `schoolInvoices`
+--
+
+DROP TABLE IF EXISTS `schoolInvoices`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `schoolInvoices` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `montly_payment_id` int(10) unsigned DEFAULT NULL,
+  `billing_package_id` int(10) unsigned DEFAULT NULL,
+  `school_id` int(11) NOT NULL,
+  `start_date` datetime NOT NULL,
+  `end_date` datetime DEFAULT NULL,
+  `discount` int(11) NOT NULL DEFAULT '0',
+  `discount_value` decimal(8,2) NOT NULL DEFAULT '0.00',
+  `value` decimal(8,2) NOT NULL DEFAULT '0.00',
+  `calculated` int(11) NOT NULL DEFAULT '0',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `qty` decimal(8,2) NOT NULL DEFAULT '0.00',
+  PRIMARY KEY (`id`),
+  KEY `schoolinvoices_montly_payment_id_foreign` (`montly_payment_id`),
+  KEY `schoolinvoices_billing_package_id_foreign` (`billing_package_id`),
+  CONSTRAINT `schoolinvoices_billing_package_id_foreign` FOREIGN KEY (`billing_package_id`) REFERENCES `billingPackages` (`id`),
+  CONSTRAINT `schoolinvoices_montly_payment_id_foreign` FOREIGN KEY (`montly_payment_id`) REFERENCES `schoolPayments` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=52 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `schoolInvoices`
+--
+
+LOCK TABLES `schoolInvoices` WRITE;
+/*!40000 ALTER TABLE `schoolInvoices` DISABLE KEYS */;
+INSERT INTO `schoolInvoices` VALUES (30,NULL,1,42,'2019-02-20 12:56:49',NULL,0,0.00,0.00,0,NULL,NULL,0.00),(31,NULL,1,43,'2019-02-22 14:28:30',NULL,0,0.00,0.00,0,NULL,NULL,0.00),(32,NULL,1,44,'2019-02-25 16:34:20',NULL,0,0.00,0.00,0,NULL,NULL,0.00),(33,NULL,1,45,'2019-03-07 08:44:53',NULL,0,0.00,0.00,0,NULL,NULL,0.00),(34,NULL,1,46,'2019-03-07 08:56:21',NULL,0,0.00,0.00,0,NULL,NULL,0.00),(35,NULL,1,47,'2019-03-07 09:03:16',NULL,0,0.00,0.00,0,NULL,NULL,0.00),(36,NULL,1,48,'2019-03-07 09:17:07',NULL,0,0.00,0.00,0,NULL,NULL,0.00),(37,NULL,1,49,'2019-03-07 13:27:17',NULL,0,0.00,0.00,0,NULL,NULL,0.00),(38,NULL,1,50,'2019-03-07 14:29:39',NULL,0,0.00,0.00,0,NULL,NULL,0.00),(39,NULL,1,51,'2019-03-07 14:58:06',NULL,0,0.00,0.00,0,NULL,NULL,0.00),(40,NULL,1,52,'2019-03-08 09:15:15',NULL,0,0.00,0.00,0,NULL,NULL,0.00),(41,NULL,1,53,'2019-03-08 09:19:53',NULL,0,0.00,0.00,0,NULL,NULL,0.00),(42,NULL,1,54,'2019-03-14 10:57:23',NULL,0,0.00,0.00,0,NULL,NULL,0.00),(43,NULL,1,55,'2019-03-19 13:19:02',NULL,0,0.00,0.00,0,NULL,NULL,0.00),(44,NULL,1,56,'2019-03-19 13:32:13',NULL,0,0.00,0.00,0,NULL,NULL,0.00),(45,NULL,1,57,'2019-03-20 09:57:55',NULL,0,0.00,0.00,0,NULL,NULL,0.00),(46,NULL,1,58,'2019-06-09 22:21:46',NULL,0,0.00,0.00,0,NULL,NULL,0.00),(47,NULL,1,59,'2019-06-11 07:02:18',NULL,0,0.00,0.00,0,NULL,NULL,0.00),(48,NULL,1,60,'2019-06-13 13:12:09',NULL,0,0.00,0.00,0,NULL,NULL,0.00),(49,NULL,1,61,'2019-06-13 13:29:35',NULL,0,0.00,0.00,0,NULL,NULL,0.00),(50,NULL,1,62,'2019-06-28 11:48:44',NULL,0,0.00,0.00,0,NULL,NULL,0.00),(51,NULL,1,63,'2019-07-02 14:59:55',NULL,0,0.00,0.00,0,NULL,NULL,0.00);
+/*!40000 ALTER TABLE `schoolInvoices` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2019-07-17 10:19:50
